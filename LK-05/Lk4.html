@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>MODERN CSS</title>
+  </head>
+  <body>
+    <header>
+      <div class="navbar">
+        <div class="nav-container">
+          <h3>Auril Aditya</h3>
+          <nav class="nav-menu">
+            <ul>
+              <li><a href="#tentang">Tentang</a></li>
+              <li><a href="#skill">Skill</a></li>
+              <li><a href="#proyek">Proyek</a></li>
+              <li><a href="#kontak">Kontak</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <section class="photo">
+      <img src="asset/Auril.jpg" alt="Foto Profil" />
+      <p>IoT Developer, Backend & AI Engineer</p>
+    </section>
+
+    <main>
+      <section id="tentang">
+        <h2>Tentang Saya</h2>
+        <article>
+          <p>
+            Saya adalah IoT Developer, Backend & AI Engineer dengan minat pada pengembangan sistem cerdas dan terintegrasi. Berpengalaman membangun proyek IoT menggunakan ESP32 serta mengembangkan backend untuk integrasi data dan aplikasi. Saya juga mendalami Artificial Intelligence, khususnya computer vision, dan senang menggabungkan berbagai teknologi untuk menciptakan solusi inovatif.
+            <br>
+            Saat ini saya adalah mahasiswa S1 Informatika semester 4 di ITKS RS dr. Soepraoen Malang yang terus aktif mengembangkan kemampuan di bidang teknologi.
+          </p>
+        </article>
+      </section>
+
+      <section id="skill">
+        <h2>Skill</h2>
+        <div class="skill-container">
+          <article>
+            <h3>IoT</h3>
+            <ul>
+              <li>Microcontroller</li>
+              <li>Sensor & Actuator</li>
+              <li>WiFi, MQTT, Blynk Connection</li>
+            </ul>
+          </article>
+          <article>
+            <h3>Backend</h3>
+            <ul>
+              <li>MySQL</li>
+              <li>Laravel / PHP</li>
+              <li>API Development</li>
+            </ul>
+          </article>
+          <article>
+            <h3>AI</h3>
+            <ul>
+              <li>Basic Machine Learning</li>
+              <li>Model Training</li>
+              <li>Computer Vision</li>
+            </ul>
+        </div>
+      </section>
+
+      <section>
+        <h2>Proyek</h2>
+        <div class="proyek-container">
+          <article>
+            <h3>SoorGo!</h3>
+            <p>
+              Aplikasi website pemesanan tiket kereta api yang dirancang simpel, cepat, dan modern.
+            </p>
+          </article>
+          <article>
+            <h3>E-Koperasi Ugoro</h3>
+            <p>
+              Website koperasi sederhana untuk memudahkan anggota dalam memperoleh informasi detail keanggotaan.
+              <br>
+              Link
+              <a href="https://koperasi-ugoro.gbtzz.my.id/login">E-Koperasi Ugoro</a>
+            </p>
+          </article>
+          <article>
+            <h3>S-Medic (coming soon)</h3>
+            <p>
+              Gagasan PKM, prototipe kotak obat pintar berbasis IoT yang dirancang untuk membantu pengelolaan obat secara teratur dan terpantau.
+            </p>
+          </article>
+        </div>
+      </section>
+      <section id="kontak">
+            <h2>Kontak</h2>
+            <article>
+                <p>Email: aurilnarendra75@gmail.com</p>
+                <p>No HP: +62821893816</p>
+            </article>
+        </section>
+    </main>
+    <main>
+      <section>
+        <h2>Form Pendaftaran</h2>
+<form id="formPendaftaran" action="#" method="post">
+          <div>
+            <label for="nama">Nama Lengkap:</label><br />
+            <input type="text" id="nama" name="nama" required />
+          </div>
+
+          <div>
+            <label for="email">Email:</label><br />
+            <input type="email" id="email" name="email" required />
+          </div>
+
+          <div>
+            <label for="hp">Nomor HP:</label><br />
+            <input type="tel" id="hp" name="hp" required />
+          </div>
+
+          <div>
+            <label for="kategori">Kategori: </label><br />
+            <select id="kategori" name="kategori" required>
+              <option value="">-- Pilih --</option>
+              <option value="iot-develop">IoT Develop</option>
+              <option value="backend">Backend</option>
+              <option value="ai-trainer">AI Trainer</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="pesan">Pesan:</label><br />
+            <textarea id="pesan" name="pesan" rows="5" required></textarea>
+          </div>
+
+          <button type="submit">Kirim Pendaftaran</button>
+        </form>
+        <div id="hasilPendaftaran"></div>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2026 - Auril Aditya</p>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>
