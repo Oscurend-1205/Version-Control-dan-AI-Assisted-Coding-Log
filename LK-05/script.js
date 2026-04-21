@@ -12,10 +12,12 @@ form.addEventListener("submit", function (e) {
 
   if (nama === "" || email === "" || nohp === "" || kategori === "") {
     alert("Semua field wajib diisi");
+    return;
   }
 
   if (!email.includes("@")) {
     alert("Email tidak valid!");
+    return;
   }
 
   hasil.innerHTML = `
