@@ -1,0 +1,47 @@
+{% extends 'petitions/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card shadow-sm border-0 p-4">
+                <div class="text-center mb-4">
+                    <h2 class="fw-bold text-red">Buat Petisi Baru</h2>
+                    <p class="text-muted">Suarakan perubahan di daerahmu</p>
+                </div>
+                <form method="post" id="petitionForm" data-cities-url="{% url 'ajax_load_cities' %}" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <div class="d-grid mt-4">
+                        <button type="submit" class="btn btn-primary btn-lg py-3 fw-bold">Sampaikan Sekarang</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    $("#id_province").change(function () {
+        const url = $("#petitionForm").attr("data-cities-url");
+        const provinceId = $(this).val();
+
+        $.ajax({
+            url: url,
+            data: {
+                'province_id': provinceId
+            },
+            success: function (data) {
+                let html_data = '<option value="">---------</option>';
+                data.forEach(function (city) {
+                    html_data += `<option value="${city.id}">${city.name}</option>`;
+                });
+                $("#id_city").html(html_data);
+            }
+        });
+    });
+</script>
+{% endblock %}

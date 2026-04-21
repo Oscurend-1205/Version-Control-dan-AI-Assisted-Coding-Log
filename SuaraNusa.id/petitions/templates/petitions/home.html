@@ -1,0 +1,111 @@
+{% extends 'petitions/base.html' %}
+
+{% block content %}
+<!-- Hero Section -->
+<header class="hero-section text-center">
+    <div class="container py-5">
+        <h1 class="display-3 fw-bold mb-4">Satu Suara, Sejuta Perubahan</h1>
+        <p class="lead mb-5">Suarakan aspirasimu dan buat perubahan nyata di wilayahmu melalui petisi digital SuaraNusa.</p>
+        <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
+            <a href="{% url 'petition_create' %}" class="btn btn-light btn-lg px-4 gap-3 text-red fw-bold">Buat Petisi Baru</a>
+            <a href="{% url 'petition_list' %}" class="btn btn-outline-light btn-lg px-4">Jelajahi Petisi</a>
+        </div>
+    </div>
+</header>
+
+<!-- Statistics -->
+<section class="py-5 bg-white border-bottom">
+    <div class="container">
+        <div class="row text-center g-4">
+            <div class="col-md-4">
+                <div class="p-3 border rounded shadow-sm bg-light">
+                    <h2 class="display-5 fw-bold text-red">{{ total_petitions }}</h2>
+                    <p class="text-muted mb-0">Total Petisi</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="p-3 border rounded shadow-sm bg-light">
+                    <h2 class="display-5 fw-bold text-red">{{ total_users }}</h2>
+                    <p class="text-muted mb-0">Total Pengguna</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="p-3 border rounded shadow-sm bg-light">
+                    <h2 class="display-5 fw-bold text-red">{{ total_supports }}</h2>
+                    <p class="text-muted mb-0">Total Dukungan</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Popular Petitions -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <h2 class="text-center mb-5 fw-bold">Petisi Paling Populer</h2>
+        <div class="row g-4">
+            {% for petition in popular_petitions %}
+                <div class="col-md-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <span class="badge bg-danger mb-2">{{ petition.get_category_display }}</span>
+                            <h5 class="card-title fw-bold">{{ petition.title }}</h5>
+                            <p class="card-text text-muted small">{{ petition.description|truncatewords:20 }}</p>
+                            <div class="mb-3">
+                                <small class="text-muted d-block mb-1">Dukungan: {{ petition.support_count }} dari {{ petition.target_support }}</small>
+                                <div class="progress" style="height: 10px;">
+                                    <div class="progress-bar" role="progressbar" style="width: {{ petition.progress_percentage }}%"></div>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <small class="text-muted"><i class="bi bi-geo-alt-fill me-1"></i>{{ petition.city.name }}</small>
+                                <a href="{{ petition.get_absolute_url }}" class="btn btn-sm btn-outline-danger">Detail</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% empty %}
+                <div class="col-12 text-center py-5">
+                    <p class="text-muted">Belum ada petisi populer.</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Recent Petitions -->
+<section class="py-5 bg-white">
+    <div class="container">
+        <h2 class="text-center mb-5 fw-bold">Petisi Terbaru</h2>
+        <div class="row g-4">
+            {% for petition in recent_petitions %}
+                <div class="col-md-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <span class="badge bg-secondary mb-2">{{ petition.get_category_display }}</span>
+                            <h5 class="card-title fw-bold h6">{{ petition.title }}</h5>
+                            <div class="mb-3">
+                                <small class="text-muted d-block mb-1">{{ petition.support_count }} dukungan</small>
+                                <div class="progress" style="height: 5px;">
+                                    <div class="progress-bar" role="progressbar" style="width: {{ petition.progress_percentage }}%"></div>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <small class="text-muted small">{{ petition.created_at|date:"d M Y" }}</small>
+                                <a href="{{ petition.get_absolute_url }}" class="btn btn-sm btn-link text-red text-decoration-none px-0">Baca Selengkapnya &rarr;</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% empty %}
+                <div class="col-12 text-center py-5">
+                    <p class="text-muted">Belum ada petisi terbaru.</p>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="text-center mt-5">
+            <a href="{% url 'petition_list' %}" class="btn btn-outline-danger btn-lg">Lihat Semua Petisi</a>
+        </div>
+    </div>
+</section>
+{% endblock %}
